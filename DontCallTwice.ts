@@ -1,3 +1,4 @@
+/* these "Omit" type stuff is copied from https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-307614501 */
 type Obj<T> = { [k: string]: T };
 type SafeObj<O extends { [k: string]: any }, Name extends string, Param extends string> = O & Obj<{[K in Name]: Param }>;
 type SwitchObj<Param extends string, Name extends string, O extends Obj<any>> = SafeObj<O, Name, Param>[Param];
@@ -18,6 +19,7 @@ export type Omit<
     , T1K extends keyof Pick<T1, keyof T> = keyof Pick<T1, keyof T>
     > = {[P1 in T1[T1K]]: T[P1]};
 
+/* let's subtract the methods from "this" type */
 class DontCallTwice {
     static f1<T extends DontCallTwice | any>(this: T): Omit<T, 'f1'> { return this as any; }
     static f2<T extends DontCallTwice | any>(this: T): Omit<T, 'f2'> { return this as any; }
