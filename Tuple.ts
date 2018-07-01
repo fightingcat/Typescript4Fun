@@ -67,11 +67,13 @@ type Optional_<T extends any[], _ extends any[]=[]> = {
 }[Magnitude<T['length']>];
 
 // some helpers
-type Indices<T> = Exclude<keyof T, keyof []>;
 type Head<T extends any[]> = Take1<T>[0];
 type Tail<T extends any[]> = Drop1<T>;
 type Unshift<T extends any[], X> = Concat1<[X], T>;
 type Push<T extends any[], X> = Reverse<Concat1<[X], Reverse<T>>>;
+
+type Indices<T> = Exclude<keyof T, keyof []>;
+type Lambda<Args extends any[], R = void> = (...r: Args) => R;
 
 // A loophole, I would rather not to use it.
 // type ToTuple<T> = T extends any[] ? T : any[];
