@@ -39,6 +39,15 @@ type Reverse<T extends any[], _ extends any[]=[]> = {
     8: Reverse<Drop8<T>, Concat8<Reverse8<T>, _>>;
 }[Magnitude<T['length']>];
 
+// unfortunately we can't take elements the way we want, but this one is also much useful.
+type TakeEqv<T extends any[], E extends any[]> = {
+    0: T;
+    1: TakeEqv<Drop1<T>, Drop1<E>>;
+    2: TakeEqv<Drop2<T>, Drop2<E>>;
+    4: TakeEqv<Drop4<T>, Drop4<E>>;
+    8: TakeEqv<Drop8<T>, Drop8<E>>;
+}[Magnitude<E['length']>];
+
 // unfortunately we can't drop elements the way we want, but this one is also much useful.
 type DropEqv<T extends any[], E extends any[]> = {
     0: T;
@@ -71,9 +80,7 @@ type Head<T extends any[]> = Take1<T>[0];
 type Tail<T extends any[]> = Drop1<T>;
 type Unshift<T extends any[], X> = Concat1<[X], T>;
 type Push<T extends any[], X> = Reverse<Concat1<[X], Reverse<T>>>;
-
 type Indices<T> = Exclude<keyof T, keyof []>;
-type Lambda<Args extends any[], R = void> = (...r: Args) => R;
 
 // A loophole, I would rather not to use it.
 // type ToTuple<T> = T extends any[] ? T : any[];
@@ -92,29 +99,30 @@ type T1K = Concat_<T512, T512>;
 
 { let _: ASSERT<T1K['length'], 1024>; }
 
-type BindFunction<T extends any[], P extends any[], R> = {
-    0: MyFunction<T, R>;
-    1: BindFunction<Drop1<T>, Drop1<P>, R>;
-    2: BindFunction<Drop2<T>, Drop2<P>, R>;
-    4: BindFunction<Drop4<T>, Drop4<P>, R>;
-    8: BindFunction<Drop8<T>, Drop8<P>, R>;
-}[Magnitude<P['length']>];
+type Lambda<Parameters extends any[], Return> = (...rest: Parameters) => Return;
 
-interface MyFunction<T extends any[], R> extends Function {
-    (...t: T): R;
-    bind<P extends Optional_<Reverse<T>>>(...p: P): BindFunction<T, P, R>;
+type BoundFunction<Parameters extends any[], Bindings extends any[], Return> = {
+    0: Lambda<Parameters, Return>;
+    1: BoundFunction<Drop1<Parameters>, Drop1<Bindings>, Return>;
+    2: BoundFunction<Drop2<Parameters>, Drop2<Bindings>, Return>;
+    4: BoundFunction<Drop4<Parameters>, Drop4<Bindings>, Return>;
+    8: BoundFunction<Drop8<Parameters>, Drop8<Bindings>, Return>;
+}[Magnitude<Bindings['length']>];
+
+interface Function {
+    <Parameters extends any[], Return>(...rest: Parameters): Return;
+    bind<Parameters extends any[], Bindings extends Optional_<Reverse<Parameters>>, Return>
+        (this: Lambda<Parameters, Return>, context: any, ...rest: Bindings): BoundFunction<Parameters, Bindings, Return>;
 }
 
-type ConvertFunction<T> = T extends MyFunction<infer X, infer R> ? MyFunction<X, R> : never;
+function f(a: number, b: boolean, c: string) {
+    return 0;
+}
 
-function f(a: number, b: boolean, c: string) { }
+let f1 = f.bind(this, 1);
+let f2 = f.bind(this, 1);
+let f3 = f2.bind(this, false);
+let f4 = f.bind(this, 1, 'test'); // [ts] 类型为“(a: number, b: boolean, c: string) => number”的 "this" 上下文不能分配给类型为“Function”的方法的 "this"。不能将类型“number”分配给类型“Return”。
 
-let f1: ConvertFunction<typeof f>;
-let f2 = f1.bind(1);
-let f3 = f2.bind(false);
-let f4 = f3.bind('test');
-
-f1(1, true, 'test');
-f2(true, 'test');
-f3('test');
-f4();
+f2(false, 'test');  // number
+f3(1); // error: [ts] 类型“1”的参数不能赋给类型“string”的参数。
