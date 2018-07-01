@@ -74,9 +74,9 @@ type Unshift<T extends any[], X> = Concat1<[X], T>;
 type Push<T extends any[], X> = Reverse<Concat1<[X], Reverse<T>>>;
 
 // A loophole, I would rather not to use it.
-type ToTuple<T> = T extends any[] ? T : any[];
-type Concat<A extends any[], B extends any[], _0 = Reverse<A>, _1 extends any[]= ToTuple<_0>> = Concat_<_1, B>;
-type Optional<T extends any[], _0 = Reverse<T>, _1 extends any[]= ToTuple<_0>> = Optional_<_1, []>;
+// type ToTuple<T> = T extends any[] ? T : any[];
+// type Concat<A extends any[], B extends any[], _0 = Reverse<A>, _1 extends any[]= ToTuple<_0>> = Concat_<_1, B>;
+// type Optional<T extends any[], _0 = Reverse<T>, _1 extends any[]= ToTuple<_0>> = Optional_<_1, []>;
 
 type ASSERT<T, U extends T> = T;
 type T8 = Concat8<[], []>;
@@ -85,8 +85,8 @@ type T32 = Concat_<T16, T16>;
 type T64 = Concat_<T32, T32>;
 type T128 = Concat_<T64, T64>;
 type T256 = Concat_<T128, T128>;
-type T512 = Concat<T256, T256>;
-type T1K = Concat<T512, T512>;
+type T512 = Concat_<T256, T256>;
+type T1K = Concat_<T512, T512>;
 
 { let _: ASSERT<T1K['length'], 1024>; }
 
