@@ -34,7 +34,17 @@ type Concat32<A extends any[], B extends any[]> = ((a0: A[0], a1: A[1], a2: A[2]
 type Concat64<A extends any[], B extends any[]> = ((a0: A[0], a1: A[1], a2: A[2], a3: A[3], a4: A[4], a5: A[5], a6: A[6], a7: A[7], a8: A[8], a9: A[9], b0: A[10], b1: A[11], b2: A[12], b3: A[13], b4: A[14], b5: A[15], b6: A[16], b7: A[17], b8: A[18], b9: A[19], c0: A[20], c1: A[21], c2: A[22], c3: A[23], c4: A[24], c5: A[25], c6: A[26], c7: A[27], c8: A[28], c9: A[29], d0: A[30], d1: A[31], d2: A[32], d3: A[33], d4: A[34], d5: A[35], d6: A[36], d7: A[37], d8: A[38], d9: A[39], e0: A[40], e1: A[41], e2: A[42], e3: A[43], e4: A[44], e5: A[45], e6: A[46], e7: A[47], e8: A[48], e9: A[49], f0: A[50], f1: A[51], f2: A[52], f3: A[53], f4: A[54], f5: A[55], f6: A[56], f7: A[57], f8: A[58], f9: A[59], g0: A[60], g1: A[61], g2: A[62], g3: A[63], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
 type Concat128<A extends any[], B extends any[]> = ((a0: A[0], a1: A[1], a2: A[2], a3: A[3], a4: A[4], a5: A[5], a6: A[6], a7: A[7], a8: A[8], a9: A[9], b0: A[10], b1: A[11], b2: A[12], b3: A[13], b4: A[14], b5: A[15], b6: A[16], b7: A[17], b8: A[18], b9: A[19], c0: A[20], c1: A[21], c2: A[22], c3: A[23], c4: A[24], c5: A[25], c6: A[26], c7: A[27], c8: A[28], c9: A[29], d0: A[30], d1: A[31], d2: A[32], d3: A[33], d4: A[34], d5: A[35], d6: A[36], d7: A[37], d8: A[38], d9: A[39], e0: A[40], e1: A[41], e2: A[42], e3: A[43], e4: A[44], e5: A[45], e6: A[46], e7: A[47], e8: A[48], e9: A[49], f0: A[50], f1: A[51], f2: A[52], f3: A[53], f4: A[54], f5: A[55], f6: A[56], f7: A[57], f8: A[58], f9: A[59], g0: A[60], g1: A[61], g2: A[62], g3: A[63], g4: A[64], g5: A[65], g6: A[66], g7: A[67], g8: A[68], g9: A[69], h0: A[70], h1: A[71], h2: A[72], h3: A[73], h4: A[74], h5: A[75], h6: A[76], h7: A[77], h8: A[78], h9: A[79], i0: A[80], i1: A[81], i2: A[82], i3: A[83], i4: A[84], i5: A[85], i6: A[86], i7: A[87], i8: A[88], i9: A[89], j0: A[90], j1: A[91], j2: A[92], j3: A[93], j4: A[94], j5: A[95], j6: A[96], j7: A[97], j8: A[98], j9: A[99], k0: A[100], k1: A[101], k2: A[102], k3: A[103], k4: A[104], k5: A[105], k6: A[106], k7: A[107], k8: A[108], k9: A[109], l0: A[110], l1: A[111], l2: A[112], l3: A[113], l4: A[114], l5: A[115], l6: A[116], l7: A[117], l8: A[118], l9: A[119], m0: A[120], m1: A[121], m2: A[122], m3: A[123], m4: A[124], m5: A[125], m6: A[126], m7: A[127], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
 
-type Magnitude<T> =
+type Optional1<A extends any[], B extends any[]> = ((a0?: A[0], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional2<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional4<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], a2?: A[2], a3?: A[3], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional8<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], a2?: A[2], a3?: A[3], a4?: A[4], a5?: A[5], a6?: A[6], a7?: A[7], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional16<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], a2?: A[2], a3?: A[3], a4?: A[4], a5?: A[5], a6?: A[6], a7?: A[7], a8?: A[8], a9?: A[9], b0?: A[10], b1?: A[11], b2?: A[12], b3?: A[13], b4?: A[14], b5?: A[15], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional32<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], a2?: A[2], a3?: A[3], a4?: A[4], a5?: A[5], a6?: A[6], a7?: A[7], a8?: A[8], a9?: A[9], b0?: A[10], b1?: A[11], b2?: A[12], b3?: A[13], b4?: A[14], b5?: A[15], b6?: A[16], b7?: A[17], b8?: A[18], b9?: A[19], c0?: A[20], c1?: A[21], c2?: A[22], c3?: A[23], c4?: A[24], c5?: A[25], c6?: A[26], c7?: A[27], c8?: A[28], c9?: A[29], d0?: A[30], d1?: A[31], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional64<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], a2?: A[2], a3?: A[3], a4?: A[4], a5?: A[5], a6?: A[6], a7?: A[7], a8?: A[8], a9?: A[9], b0?: A[10], b1?: A[11], b2?: A[12], b3?: A[13], b4?: A[14], b5?: A[15], b6?: A[16], b7?: A[17], b8?: A[18], b9?: A[19], c0?: A[20], c1?: A[21], c2?: A[22], c3?: A[23], c4?: A[24], c5?: A[25], c6?: A[26], c7?: A[27], c8?: A[28], c9?: A[29], d0?: A[30], d1?: A[31], d2?: A[32], d3?: A[33], d4?: A[34], d5?: A[35], d6?: A[36], d7?: A[37], d8?: A[38], d9?: A[39], e0?: A[40], e1?: A[41], e2?: A[42], e3?: A[43], e4?: A[44], e5?: A[45], e6?: A[46], e7?: A[47], e8?: A[48], e9?: A[49], f0?: A[50], f1?: A[51], f2?: A[52], f3?: A[53], f4?: A[54], f5?: A[55], f6?: A[56], f7?: A[57], f8?: A[58], f9?: A[59], g0?: A[60], g1?: A[61], g2?: A[62], g3?: A[63], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+type Optional128<A extends any[], B extends any[]> = ((a0?: A[0], a1?: A[1], a2?: A[2], a3?: A[3], a4?: A[4], a5?: A[5], a6?: A[6], a7?: A[7], a8?: A[8], a9?: A[9], b0?: A[10], b1?: A[11], b2?: A[12], b3?: A[13], b4?: A[14], b5?: A[15], b6?: A[16], b7?: A[17], b8?: A[18], b9?: A[19], c0?: A[20], c1?: A[21], c2?: A[22], c3?: A[23], c4?: A[24], c5?: A[25], c6?: A[26], c7?: A[27], c8?: A[28], c9?: A[29], d0?: A[30], d1?: A[31], d2?: A[32], d3?: A[33], d4?: A[34], d5?: A[35], d6?: A[36], d7?: A[37], d8?: A[38], d9?: A[39], e0?: A[40], e1?: A[41], e2?: A[42], e3?: A[43], e4?: A[44], e5?: A[45], e6?: A[46], e7?: A[47], e8?: A[48], e9?: A[49], f0?: A[50], f1?: A[51], f2?: A[52], f3?: A[53], f4?: A[54], f5?: A[55], f6?: A[56], f7?: A[57], f8?: A[58], f9?: A[59], g0?: A[60], g1?: A[61], g2?: A[62], g3?: A[63], g4?: A[64], g5?: A[65], g6?: A[66], g7?: A[67], g8?: A[68], g9?: A[69], h0?: A[70], h1?: A[71], h2?: A[72], h3?: A[73], h4?: A[74], h5?: A[75], h6?: A[76], h7?: A[77], h8?: A[78], h9?: A[79], i0?: A[80], i1?: A[81], i2?: A[82], i3?: A[83], i4?: A[84], i5?: A[85], i6?: A[86], i7?: A[87], i8?: A[88], i9?: A[89], j0?: A[90], j1?: A[91], j2?: A[92], j3?: A[93], j4?: A[94], j5?: A[95], j6?: A[96], j7?: A[97], j8?: A[98], j9?: A[99], k0?: A[100], k1?: A[101], k2?: A[102], k3?: A[103], k4?: A[104], k5?: A[105], k6?: A[106], k7?: A[107], k8?: A[108], k9?: A[109], l0?: A[110], l1?: A[111], l2?: A[112], l3?: A[113], l4?: A[114], l5?: A[115], l6?: A[116], l7?: A[117], l8?: A[118], l9?: A[119], m0?: A[120], m1?: A[121], m2?: A[122], m3?: A[123], m4?: A[124], m5?: A[125], m6?: A[126], m7?: A[127], ...r: B) => 0) extends ((...r: infer R) => 0) ? R : never;
+
+// this is the magic key.
+type Magnitude<T extends number> =
     T extends 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 | 61 | 62 | 63 | 64 | 65 | 66 | 67 | 68 | 69 | 70 | 71 | 72 | 73 | 74 | 75 | 76 | 77 | 78 | 79 | 80 | 81 | 82 | 83 | 84 | 85 | 86 | 87 | 88 | 89 | 90 | 91 | 92 | 93 | 94 | 95 | 96 | 97 | 98 | 99 | 100 | 101 | 102 | 103 | 104 | 105 | 106 | 107 | 108 | 109 | 110 | 111 | 112 | 113 | 114 | 115 | 116 | 117 | 118 | 119 | 120 | 121 | 122 | 123 | 124 | 125 | 126 | 127 ?
     T extends 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 | 61 | 62 | 63 ?
     T extends 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 ?
@@ -43,34 +53,34 @@ type Magnitude<T> =
     T extends 0 | 1 | 2 | 3 ?
     T extends 0 | 1 ?
     T extends 0 ?
-    0 : 1 : 2 : 4 : 8 : 16 : 32 : 64 : 128;
+    0 : 1 : 2 : 4 : 8 : 16 : 32 : 64 : number extends T ? never : 128;
 
-type Indices<T> = Exclude<keyof T, keyof []>;
-
-type ToTuple<T> = T extends any[] ? T : any[];
-
-type Head<T extends any[]> = Take1<T>[0];
-
-type Tail<T extends any[]> = Drop1<T>;
-
-type Unshift<T extends any[], X> = Concat1<[X], T>;
-
-type Push<Tuple extends any[], X, R = Reverse<Tuple>, T extends any[]= ToTuple<R>> = Reverse<Unshift<T, X>>;
-
-type Reverse<T extends any[], R extends any[]=[]> = {
-    0: R;
-    1: Concat1<T, R>;
-    2: Reverse<Drop2<T>, Concat2<Reverse2<T>, R>>;
-    4: Reverse<Drop4<T>, Concat4<Reverse4<T>, R>>;
-    8: Reverse<Drop8<T>, Concat8<Reverse8<T>, R>>;
-    16: Reverse<Drop16<T>, Concat16<Reverse16<T>, R>>;
-    32: Reverse<Drop32<T>, Concat32<Reverse32<T>, R>>;
-    64: Reverse<Drop64<T>, Concat64<Reverse64<T>, R>>;
-    128: Reverse<Drop128<T>, Concat128<Reverse128<T>, R>>;
+type Reverse<T extends any[], _ extends any[]=[]> = {
+    0: _;
+    1: Concat1<T, _>;
+    2: Reverse<Drop2<T>, Concat2<Reverse2<T>, _>>;
+    4: Reverse<Drop4<T>, Concat4<Reverse4<T>, _>>;
+    8: Reverse<Drop8<T>, Concat8<Reverse8<T>, _>>;
+    16: Reverse<Drop16<T>, Concat16<Reverse16<T>, _>>;
+    32: Reverse<Drop32<T>, Concat32<Reverse32<T>, _>>;
+    64: Reverse<Drop64<T>, Concat64<Reverse64<T>, _>>;
+    128: Reverse<Drop128<T>, Concat128<Reverse128<T>, _>>;
 }[Magnitude<T['length']>];
 
-type Concat<A extends any[], B extends any[], R = Reverse<A>, T extends any[]= ToTuple<R>> = Concat_<T, B>;
+// unfortunately we can't drop elements the way we want, but this one is also much useful.
+type DropEqv<T extends any[], E extends any[]> = {
+    0: T;
+    1: DropEqv<Drop1<T>, Drop1<E>>;
+    2: DropEqv<Drop2<T>, Drop2<E>>;
+    4: DropEqv<Drop4<T>, Drop4<E>>;
+    8: DropEqv<Drop8<T>, Drop8<E>>;
+    16: DropEqv<Drop16<T>, Drop16<E>>;
+    32: DropEqv<Drop32<T>, Drop32<E>>;
+    64: DropEqv<Drop64<T>, Drop64<E>>;
+    128: DropEqv<Drop128<T>, Drop128<E>>;
+}[Magnitude<E['length']>];
 
+// A need to be reversed
 type Concat_<A extends any[], B extends any[]> = {
     0: B,
     1: Concat_<Drop1<A>, Concat1<Reverse1<A>, B>>;
@@ -81,18 +91,86 @@ type Concat_<A extends any[], B extends any[]> = {
     32: Concat_<Drop32<A>, Concat32<Reverse32<A>, B>>;
     64: Concat_<Drop64<A>, Concat64<Reverse64<A>, B>>;
     128: Concat_<Drop128<A>, Concat128<Reverse128<A>, B>>;
-}[Magnitude<A['length']>]
+}[Magnitude<A['length']>];
 
-// type T256 = Concat128<[], Concat128<[], []>>;
+// A need to be reversed
+type Optional_<T extends any[], _ extends any[]=[]> = {
+    0: _;
+    1: Optional_<Drop1<T>, Optional1<Reverse1<T>, _>>;
+    2: Optional_<Drop2<T>, Optional2<Reverse2<T>, _>>;
+    4: Optional_<Drop4<T>, Optional4<Reverse4<T>, _>>;
+    8: Optional_<Drop8<T>, Optional8<Reverse8<T>, _>>;
+    16: Optional_<Drop16<T>, Optional16<Reverse16<T>, _>>;
+    32: Optional_<Drop32<T>, Optional32<Reverse32<T>, _>>;
+    64: Optional_<Drop64<T>, Optional64<Reverse64<T>, _>>;
+    128: Optional_<Drop128<T>, Optional128<Reverse128<T>, _>>;
+}[Magnitude<T['length']>];
+
+// some helpers
+type Indices<T> = Exclude<keyof T, keyof []>;
+type Head<T extends any[]> = Take1<T>[0];
+type Tail<T extends any[]> = Drop1<T>;
+type Unshift<T extends any[], X> = Concat1<[X], T>;
+type Push<T extends any[], X> = Reverse<Concat1<[X], Reverse<T>>>;
+
+// A loophole, I would rather not to use it.
+type ToTuple<T> = T extends any[] ? T : any[];
+type Concat<A extends any[], B extends any[], _0 = Reverse<A>, _1 extends any[]= ToTuple<_0>> = Concat_<_1, B>;
+type Optional<T extends any[], _0 = Reverse<T>, _1 extends any[]= ToTuple<_0>> = Optional_<_1, []>;
+
+type T256 = Concat128<[], Concat128<[], []>>;
+// suppressed for not slowing down type checker
 // type T512 = Concat<T256, T256>;
 // type T1K = Concat<T512, T512>;
 // type T2K = Concat<T1K, T1K>;
 // type T4K = Concat<T2K, T2K>;
 // type T8K = Concat<T4K, T4K>;
 // type T16K = Concat<T8K, T8K>;
+
+// here starts the failures:
 // type T32K = Concat<T16K, T16K>;
 // type T64K = Concat<T32K, T32K>;
 // type T128K = Concat<T64K, T64K>;
 // type T256K = Concat<T128K, T128K>;
 // type T512K = Concat<T256K, T256K>;
 // type T1M = Concat<T512K, T512K>;
+// type PASS = T16K['length'];
+
+type ASSERT<T, U extends T> = T;
+var _1: ASSERT<T256['length'], 256>;
+// var _2: ASSERT<T512['length'], 512>;
+// var _3: ASSERT<T1K['length'], 1024>;
+// var _4: ASSERT<T2K['length'], 2048>;
+// var _5: ASSERT<T4K['length'], 4096>;
+// var _6: ASSERT<T8K['length'], 8192>;
+
+type BindFunction<T extends any[], P extends any[], R> = {
+    0: MyFunction<T, R>;
+    1: BindFunction<Drop1<T>, Drop1<P>, R>;
+    2: BindFunction<Drop2<T>, Drop2<P>, R>;
+    4: BindFunction<Drop4<T>, Drop4<P>, R>;
+    8: BindFunction<Drop8<T>, Drop8<P>, R>;
+    16: BindFunction<Drop16<T>, Drop16<P>, R>;
+    32: BindFunction<Drop32<T>, Drop32<P>, R>;
+    64: BindFunction<Drop64<T>, Drop64<P>, R>;
+    128: BindFunction<Drop128<T>, Drop128<P>, R>;
+}[Magnitude<P['length']>];
+
+interface MyFunction<T extends any[], R> extends Function {
+    (...t: T): R;
+    bind<P extends Optional_<Reverse<T>>>(...p: P): BindFunction<T, P, R>;
+}
+
+type ConvertFunction<T> = T extends MyFunction<infer X, infer R> ? MyFunction<X, R> : never;
+
+function f(a: number, b: boolean, c: string) { }
+
+let f1: ConvertFunction<typeof f>;
+let f2 = f1.bind(1);
+let f3 = f2.bind(false);
+let f4 = f3.bind('test');
+
+f1(1, true, 'test');
+f2(true, 'test');
+f3('test');
+f4();
