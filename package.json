@@ -1,0 +1,23 @@
+{
+  "name": "Typescript4Fun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fightingcat/Typescript4Fun.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fightingcat/Typescript4Fun/issues"
+  },
+  "homepage": "https://github.com/fightingcat/Typescript4Fun#readme",
+  "devDependencies": {
+    "typescript": "^3.0.0-dev.20180630"
+  }
+}

@@ -88,7 +88,7 @@ type Indices<T> = Exclude<keyof T, keyof []>;
 // type Optional<T extends any[], _0 = Reverse<T>, _1 extends any[]= ToTuple<_0>> = Optional_<_1, []>;
 
 type ASSERT<T, U extends T> = T;
-type T8 = Concat8<[], []>;
+type T8 = Concat8<[0, 0, 0, 0, 0, 0, 0, 0], []>;
 type T16 = Concat_<T8, T8>;
 type T32 = Concat_<T16, T16>;
 type T64 = Concat_<T32, T32>;
@@ -119,10 +119,10 @@ function f(a: number, b: boolean, c: string) {
     return 0;
 }
 
-let f1 = f.bind(this, 1);
-let f2 = f.bind(this, 1);
-let f3 = f2.bind(this, false);
-let f4 = f.bind(this, 1, 'test'); // [ts] 类型为“(a: number, b: boolean, c: string) => number”的 "this" 上下文不能分配给类型为“Function”的方法的 "this"。不能将类型“number”分配给类型“Return”。
+let f1 = f.bind(null, 1);
+let f2 = f.bind(null, 1);
+let f3 = f2.bind(null, false);
+let f4 = f.bind(null, 1, 'test'); // [ts] 类型为“(a: number, b: boolean, c: string) => number”的 "this" 上下文不能分配给类型为“Function”的方法的 "this"。不能将类型“number”分配给类型“Return”。
 
 f2(false, 'test');  // number
 f3(1); // error: [ts] 类型“1”的参数不能赋给类型“string”的参数。
