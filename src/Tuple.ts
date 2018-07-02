@@ -99,10 +99,8 @@ type T1K = Concat_<T512, T512>;
 
 { let _: ASSERT<T1K['length'], 1024>; }
 
-type Lambda<Parameters extends any[], Return> = (...rest: Parameters) => Return;
-
 type BoundFunction<Parameters extends any[], Bindings extends any[], Return> = {
-    0: Lambda<Parameters, Return>;
+    0: (...rest: Parameters) => Return;
     1: BoundFunction<Drop1<Parameters>, Drop1<Bindings>, Return>;
     2: BoundFunction<Drop2<Parameters>, Drop2<Bindings>, Return>;
     4: BoundFunction<Drop4<Parameters>, Drop4<Bindings>, Return>;
@@ -112,11 +110,14 @@ type BoundFunction<Parameters extends any[], Bindings extends any[], Return> = {
 interface Function {
     <Parameters extends any[], Return>(...rest: Parameters): Return;
     bind<Parameters extends any[], Bindings extends Optional_<Reverse<Parameters>>, Return>
-        (this: Lambda<Parameters, Return>, context: any, ...rest: Bindings): BoundFunction<Parameters, Bindings, Return>;
+        (this: (...rest: Parameters) => Return, context: any, ...rest: Bindings): BoundFunction<Parameters, Bindings, Return>;
 }
 
 function f(a: number, b: boolean, c: string) {
     return 0;
+}
+
+function g(a: number, b: boolean, c: string) {
 }
 
 let f1 = f.bind(null, 1);
@@ -126,3 +127,12 @@ let f4 = f.bind(null, 1, 'test'); // [ts] 类型为“(a: number, b: boolean, c:
 
 f2(false, 'test');  // number
 f3(1); // error: [ts] 类型“1”的参数不能赋给类型“string”的参数。
+
+let g1 = g.bind(null, 1, true, 'string');
+
+function inputTest(f: (a: boolean, b: string) => number) {}
+
+function inputTest2(f: () => void) {}
+
+inputTest(f1);
+inputTest2(g1);
