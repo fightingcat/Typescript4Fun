@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "ts-node ./script/gen-tuple.ts > ./src/tuple.d.ts"
   },
   "repository": {
     "type": "git",

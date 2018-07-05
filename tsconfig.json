@@ -1,9 +1,14 @@
 {
     "compilerOptions": {
         "strict": true,
-        "noEmit": true
+        "noEmit": true,
+        "lib": [
+            "dom",
+            "esnext"
+        ]
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "test/**/*.ts"
     ]
 }
