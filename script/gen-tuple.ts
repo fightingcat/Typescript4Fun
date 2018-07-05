@@ -146,12 +146,11 @@ function genCode(max: number) {
             " */"
         ].join('\n'),
 
-        , ...[
-            `type Measure<T extends number> =`,
-            ...map(max, i => `\t[T] extends [LessThan${PoT(i)}] ?`).reverse(),
-            `\t0 : ${map(max - 1, PoT).join(' : ')} : number extends T ? never : ${PoT(max - 1)};`,
-            ...map(max, i => `type LessThan${PoT(i)} = ${take(PoT(i), count()).join(' | ')};`),
-        ],
+        , replace(`type Measure<T extends number> = \n$1 ? \n\t0 : $2 : \n\tnumber extends T ? never : $3;`, {
+            $1: map(max, i => `\tT extends ${take(PoT(i), count()).join(' | ')}`).reverse().join(' ?\n'),
+            $2: map(max - 1, PoT).join(' : '),
+            $3: PoT(max - 1)
+        }),
 
         // drop
         map(max, i => {
@@ -223,24 +222,24 @@ function genCode(max: number) {
                 });
         }).join('\n'),
 
-        // Packed optional
-        map(max + 7, i => {
-            return i <= max ? i < 4
-                ? replace(`type Packed$1$ = [$2];`, {
-                    $1: size(PoT(i)),
-                    $2: map(PoT(i), j => 'any?').join(', ')
-                })
-                : replace(`type Packed$1$ = ConcatRev$2$<Packed$3$, Packed$3$>;`, {
-                    $1: size(PoT(i)),
-                    $2: PoT(i - 1),
-                    $3: size(PoT(i - 1))
-                })
-                : replace(`type Packed$1$ = ConcatRev$<Packed$3$, Packed$3$>;`, {
-                    $1: size(PoT(i)),
-                    $2: PoT(i - 1),
-                    $3: size(PoT(i - 1))
-                });
-        }).join('\n'),
+        // // Packed optional
+        // map(max + 7, i => {
+        //     return i <= max ? i < 4
+        //         ? replace(`type Packed$1$ = [$2];`, {
+        //             $1: size(PoT(i)),
+        //             $2: map(PoT(i), j => 'any?').join(', ')
+        //         })
+        //         : replace(`type Packed$1$ = ConcatRev$2$<Packed$3$, Packed$3$>;`, {
+        //             $1: size(PoT(i)),
+        //             $2: PoT(i - 1),
+        //             $3: size(PoT(i - 1))
+        //         })
+        //         : replace(`type Packed$1$ = ConcatRev$<Packed$3$, Packed$3$>;`, {
+        //             $1: size(PoT(i)),
+        //             $2: PoT(i - 1),
+        //             $3: size(PoT(i - 1))
+        //         });
+        // }).join('\n'),
 
     ].join('\n');
 }
