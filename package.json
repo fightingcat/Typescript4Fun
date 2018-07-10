@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "ts-node ./script/gen-tuple.ts > ./src/tuple.d.ts"
+    "build": "ts-node ./script/gen-tuple.ts > ./src/tuple.d.ts",
+    "test": "ts-node ./test/tuple.perf.ts"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/fightingcat/Typescript4Fun#readme",
   "devDependencies": {
-    "typescript": "^3.0.0-dev.20180630"
+    "@types/node": "^10.5.2",
+    "ts-node": "^7.0.0",
+    "typescript": "^3.0.0-dev.20180705"
   }
 }

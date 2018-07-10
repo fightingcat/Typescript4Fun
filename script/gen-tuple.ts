@@ -111,40 +111,7 @@ function genCode(max: number) {
         `// to bypass type checker`,
         `type AsTuple<T> = T extends any[] ? T : never;`, ,
 
-        // Beware of dragon
-        , [
-            "/*",
-            " *                                 ==(W{==========-      /===-",
-            " *                                   ||  (.--.)         /===-_---~~~~~~~~~------____",
-            " *                                   | \\_,|**|,__      |===-~___                _,-' `",
-            " *                      -==\\\\        `\\ ' `--'   ),    `//~\\\\   ~~~~`---.___.-~~",
-            " *                  ______-==|        /`\\_. .__/\\ \\    | |  \\\\           _-~`",
-            " *            __--~~~  ,-/-==\\\\      (   | .  |~~~~|   | |   `\\        ,'",
-            " *         _-~       /'    |  \\\\     )__/==0==-\\<>/   / /      \\      /",
-            " *       .'        /       |   \\\\      /~\\___/~~\\/  /' /        \\   /'",
-            " *      /  ____  /         |    \\`\\.__/-~~   \\  |_/'  /          \\/'",
-            " *     /-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`",
-            " *                       \\_|      /        _) | ;  ),   __--~~",
-            " *                         '~~--_/      _-~/- |/ \\   '-~ \\",
-            " *                        {\\__--_/}    / \\\\_>-|)<__\\      \\",
-            " *                        /'   (_/  _-~  | |__>--<__|      |",
-            " *                       |   _/) )-~     | |__>--<__|      |",
-            " *                       / /~ ,_/       / /__>---<__/      |",
-            " *                      o-o _//        /-~_>---<__-~      /",
-            " *                      (^(~          /~_>---<__-      _-~",
-            " *                     ,/|           /__>--<__/     _-~",
-            " *                  ,//('(          |__>--<__|     /  -Alex Wargacki  .----_",
-            " *                 ( ( '))          |__>--<__|    |                 /' _---_~\\",
-            " *              `-)) )) (           |__>--<__|    |               /'  /     ~\\`\\",
-            " *             ,/,'//( (             \\__>--<__\\    \\            /'  //        ||",
-            " *           ,( ( ((, ))              ~-__>--<_~-_  ~--____---~' _/'/        /'",
-            " *         `~/  )` ) ,/|                 ~-_~>--<_/-__       __-~ _/",
-            " *       ._-~//( )/ )) `                    ~~-'_/_/ /~~~~~~~__--~",
-            " *        ;'( ')/ ,)(                              ~~~~~~~~~~",
-            " *       ' ') '( (/",
-            " *         '   '  `",
-            " */"
-        ].join('\n'),
+        , "// Beware of dragons",
 
         , replace(`type Measure<T extends number> = \n$1 ? \n\t0 : $2 : \n\tnumber extends T ? never : $3;`, {
             $1: map(max, i => `\tT extends ${take(PoT(i), count()).join(' | ')}`).reverse().join(' ?\n'),
@@ -202,44 +169,6 @@ function genCode(max: number) {
             });
 
         }).join('\n'),
-
-        // Packed
-        map(max + 7, i => {
-            return i <= max ? i < 4
-                ? replace(`type Packed$1 = [$2];`, {
-                    $1: size(PoT(i)),
-                    $2: map(PoT(i), j => 'any').join(', ')
-                })
-                : replace(`type Packed$1 = ConcatRev$2<Packed$3, Packed$3>;`, {
-                    $1: size(PoT(i)),
-                    $2: PoT(i - 1),
-                    $3: size(PoT(i - 1))
-                })
-                : replace(`type Packed$1 = ConcatRev<Packed$3, Packed$3>;`, {
-                    $1: size(PoT(i)),
-                    $2: PoT(i - 1),
-                    $3: size(PoT(i - 1))
-                });
-        }).join('\n'),
-
-        // // Packed optional
-        // map(max + 7, i => {
-        //     return i <= max ? i < 4
-        //         ? replace(`type Packed$1$ = [$2];`, {
-        //             $1: size(PoT(i)),
-        //             $2: map(PoT(i), j => 'any?').join(', ')
-        //         })
-        //         : replace(`type Packed$1$ = ConcatRev$2$<Packed$3$, Packed$3$>;`, {
-        //             $1: size(PoT(i)),
-        //             $2: PoT(i - 1),
-        //             $3: size(PoT(i - 1))
-        //         })
-        //         : replace(`type Packed$1$ = ConcatRev$<Packed$3$, Packed$3$>;`, {
-        //             $1: size(PoT(i)),
-        //             $2: PoT(i - 1),
-        //             $3: size(PoT(i - 1))
-        //         });
-        // }).join('\n'),
 
     ].join('\n');
 }
