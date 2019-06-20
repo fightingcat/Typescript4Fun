@@ -4,6 +4,8 @@ type TupleLast<T extends any[]> = T[TupleTail<T>['length']];
 
 type TupleTail<T extends any[]> = ((...t: T) => void) extends (x: any, ...t: infer R) => void ? R : never;
 
+type TupleInit<T extends any[]> = TypeAssert<Overwrite<TupleTail<T>, T>, any[]>;
+
 type TupleUnshift<T extends any[], X> = ((x: X, ...t: T) => void) extends (...t: infer R) => void ? R : never;
 
 type TuplePush<T extends any[], X> = TypeAssert<Overwrite<TupleUnshift<T, any>, T & { [x: string]: X }>, any[]>;
